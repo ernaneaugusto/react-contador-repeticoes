@@ -47,13 +47,13 @@ function App() {
     <div className="App">
       <MostraVoltas voltas={numVoltas} />
 
-      <Button texto="-" onClick={diminuirVoltas} />
-      <Button texto="+" onClick={aumentarVoltas} />
+      <Button className="btn btn-primary"texto="-" onClick={diminuirVoltas} />
+      <Button className="btn btn-primary"texto="+" onClick={aumentarVoltas} />
 
       <MostraTempo tempo={tempo} voltas={numVoltas} />
 
       <ButtonIniciarParar onClick={toggleRunning} iniciar={running} />
-      <Button onClick={reset} texto="Reiniciar" />
+      <Button onClick={reset} className="btn btn-danger"texto="Reiniciar" />
     </div>
   );
 }
