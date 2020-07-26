@@ -15,10 +15,10 @@ const MostraTempo = (props) => {
   const voltas = props.voltas;
   const tempoPorVolta = tempo / voltas;
   // separa os min dos seg e faz a formatacao colocando o 0 para valores menores que 10
-  const minutos = Math.round(tempo / 60) < 10 ? '0' + Math.round(tempo / 60) : Math.round(tempo / 60);
-  const segundos = Math.round(tempo % 60) < 10 ? '0' + Math.round(tempo % 60) : Math.round(tempo % 60);
-  const minutosVolta = Math.round(tempoPorVolta / 60) < 10 ? '0' + Math.round(tempoPorVolta / 60) : Math.round(tempoPorVolta / 60);
-  const segundosVolta = Math.round(tempoPorVolta % 60) < 10 ? '0' + Math.round(tempoPorVolta % 60) : Math.round(tempoPorVolta % 60);
+  const minutos = Math.floor(tempo / 60) < 10 ? '0' + Math.floor(tempo / 60) : Math.floor(tempo / 60);
+  const segundos = Math.floor(tempo % 60) < 10 ? '0' + Math.floor(tempo % 60) : Math.floor(tempo % 60);
+  const minutosVolta = Math.floor(tempoPorVolta / 60) < 10 ? '0' + Math.floor(tempoPorVolta / 60) : Math.floor(tempoPorVolta / 60);
+  const segundosVolta = Math.floor(tempoPorVolta % 60) < 10 ? '0' + Math.floor(tempoPorVolta % 60) : Math.floor(tempoPorVolta % 60);
 
   return (
     <div>
@@ -35,6 +35,13 @@ const MostraTempo = (props) => {
 }
 
 const Button = (props) => <button className="btn btn-primary" onClick={props.onClick}>{props.texto}</button>
+
+const ButtonIniciarParar = (props) => {
+  if(props.iniciar) {
+    return <button className="btn btn-warning" onClick={props.onClick}>Parar</button>
+  }
+  return <button className="btn btn-success" onClick={props.onClick}>Iniciar</button>
+}
 
 function App() {
   const numMinimoVoltas = 1;
@@ -83,7 +90,7 @@ function App() {
 
       <MostraTempo tempo={tempo} voltas={numVoltas} />
 
-      <Button onClick={toggleRunning} texto="Iniciar" />
+      <ButtonIniciarParar onClick={toggleRunning} iniciar={running} />
       <Button onClick={reset} texto="Reiniciar" />
     </div>
   );
