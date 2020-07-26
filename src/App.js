@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 
 const MostraVoltas = (props) => {
@@ -19,18 +19,27 @@ const MostraTempo = (props) => {
   )
 }
 
-const Button = (props) => <button className="btn btn-primary">{props.texto}</button>
+const Button = (props) => <button className="btn btn-primary" onClick={props.onClick}>{props.texto}</button>
 
 function App() {
+  const [numVoltas, setNumVoltas] = useState(12);
+
+  const aumentarVoltas = () => {
+    setNumVoltas(numVoltas + 1);
+  }
+  const diminuirVoltas = () => {
+    setNumVoltas(numVoltas - 1);
+  }
+
   return (
     <div className="App">
-      <MostraVoltas voltas="12" />
+      <MostraVoltas voltas={numVoltas} />
 
-      <Button texto="-" />
-      <Button texto="+" />
-      
+      <Button texto="-" onClick={diminuirVoltas} />
+      <Button texto="+" onClick={aumentarVoltas} />
+
       <MostraTempo tempo="01:45" />
-      
+
       <Button texto="Iniciar" />
       <Button texto="Reiniciar" />
     </div>
