@@ -1,24 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+const MostraVoltas = (props) => {
+  return (
+    <h1 className="font-weight-bold display-4">
+      {props.voltas}
+      <p className="lead">Voltas</p>
+    </h1>
+  )
+}
+
+const MostraTempo = (props) => {
+  return (
+    <h2 className="font-weight-bold display-5 mt-4">
+      {props.tempo}
+      <p className="lead">Tempo médio por volta</p>
+    </h2>
+  )
+}
+
+const Button = (props) => <button className="btn btn-primary">{props.texto}</button>
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MostraVoltas voltas="12" />
+
+      <Button texto="-" />
+      <Button texto="+" />
+      
+      <MostraTempo tempo="01:45" />
+      
+      <Button texto="Iniciar" />
+      <Button texto="Reiniciar" />
     </div>
   );
 }

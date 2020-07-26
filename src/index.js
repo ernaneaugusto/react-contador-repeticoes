@@ -6,7 +6,15 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <main className="container">
+      <section className="row justify-content-center mt-5">
+        <div className="col-lg-6">
+          <div className="card p-4">
+            <App />
+          </div>
+        </div>
+      </section>
+    </main>
   </React.StrictMode>,
   document.getElementById('root')
 );
